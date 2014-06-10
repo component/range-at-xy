@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Range at XY</title>
+</head>
+<body>
+  <!-- Content -->
+  <h1>Range at XY Demo</h1>
+  <p><em>Click on text to delete characters.</em></p>
+  <p><b>Badgers</b> are short-legged <a href="http://en.wikipedia.org/wiki/Omnivore" title="Omnivore">omnivores</a> in the family <a href="http://en.wikipedia.org/wiki/Mustelidae" title="Mustelidae">Mustelidae</a> which also includes the <a href="http://en.wikipedia.org/wiki/Otter" title="Otter">otters</a>, <a href="http://en.wikipedia.org/wiki/Polecat" title="Polecat">polecats</a>, <a href="http://en.wikipedia.org/wiki/Weasel" title="Weasel">weasels</a> and <a href="http://en.wikipedia.org/wiki/Wolverine" title="Wolverine">wolverines</a>. The 11 <a href="http://en.wikipedia.org/wiki/Species" title="Species">species</a> of badger are grouped in three subfamilies: Melinae (9 <a href="http://en.wikipedia.org/wiki/Eurasia" title="Eurasia">Eurasian</a> badgers), Mellivorinae (the <a href="http://en.wikipedia.org/wiki/Honey_badger" title="Honey badger">honey badger</a> or ratel) and Taxideinae (the <a href="http://en.wikipedia.org/wiki/American_badger" title="American badger">American badger</a>). The Asiatic <a href="http://en.wikipedia.org/wiki/Stink_badger" title="Stink badger">stink badgers</a> of the genus <i>Mydaus</i> were formerly included within Melinae (and thus Mustelidae), but recent genetic evidence<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span>[</span>1<span>]</span></a></sup> indicates these are actually members of the skunk family, placing them in the <a href="http://en.wikipedia.org/wiki/Taxonomic_family" title="Taxonomic family" class="mw-redirect">taxonomic family</a> <a href="http://en.wikipedia.org/wiki/Mephitidae" title="Mephitidae" class="mw-redirect">Mephitidae</a>.</p>
+  <div class="aim"></div>
+  
+  <!-- Style -->
+  <style>
+    body {
+      cursor: crosshair;
+      font-size: 30px;
+    }
+    .aim {
+      outline: 2px solid red;
+      z-index: -1;
+      position: fixed;
+    }
+  </style>
+  
+  <!-- Logic -->
+  <script src="build/build.js"></script>
+  <script>
+    var atxy = require('range-at-xy');
+    document.body.addEventListener('mousemove', function(e) {
+      var range = atxy(e.target, e.clientX, e.clientY);
+      if (range) {
+        var rect = range.getBoundingClientRect();
+        var aim = document.querySelector('.aim');
+        aim.style.left = rect.left + 'px';
+        aim.style.top = rect.top + 'px';
+        aim.style.width = rect.width + 'px';
+        aim.style.height = rect.height + 'px';
+      }
+    }, false);
+    document.body.addEventListener('click', function(e) {
+      var range = atxy(e.target, e.clientX, e.clientY)
+      if (range) {
+        range.deleteContents();
+      }
+      e.preventDefault();
+    }, false);
+  </script>
+</body>
+</html>

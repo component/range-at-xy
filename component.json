@@ -1,0 +1,6 @@
+{
+  "name": "range-at-xy",
+  "version": "0.0.1",
+  "dependencies": { },
+  "scripts": [ "index.js" ]
+}
