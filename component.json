@@ -1,6 +1,7 @@
 {
   "name": "range-at-xy",
   "version": "0.0.1",
+  "tags": ["range", "position", "viewport", "coordinates"],
   "dependencies": { },
   "scripts": [ "index.js" ]
 }
