@@ -2,5 +2,9 @@
   "name": "range-at-xy",
   "version": "0.0.1",
   "tags": ["range", "position", "viewport", "coordinates"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/component/range-at-xy.git"
+  },
   "dependencies": { }
 }
